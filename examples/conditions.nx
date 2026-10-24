@@ -1,0 +1,41 @@
+if (true) do
+    print(1)
+done
+
+if (false) do
+    print(2)
+done
+
+if (1>2) do
+    print(3)
+done
+
+if (2>1) do
+    print(4)
+done
+
+if (2==1) do
+    print(5)
+done
+
+if (2==2) do
+    print(6)
+done
+
+if (2!=1) do
+    print(7)
+done
+
+if (2!=2) do
+    print(8)
+done
+
+if ("") do
+    print(9)
+done
+
+if ("Hi") do
+    print(10)
+done
+
+-- etc.

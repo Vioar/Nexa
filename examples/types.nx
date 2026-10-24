@@ -1,0 +1,11 @@
+var number_i = (int)5   -- integer 5
+var number_f = (float)5.34 -- float 5.34
+var text = (string)"Hello World!" -- string
+var yes_no = (bool)true -- bool
+var list = [number_i, number_f, text, yes_no] --list
+
+print(number_i)
+print(number_f)
+print(text)
+print(yes_no)
+print(list)
