@@ -1,0 +1,242 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/main.o",
+      "src/main.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/main.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/lexer/lexer.o",
+      "src/lexer/lexer.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/lexer/lexer.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/lexer/lexer.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/parser/parser.o",
+      "src/parser/parser.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/parser/parser.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/parser/parser.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/parser/parser_utils.o",
+      "src/parser/parser_utils.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/parser/parser_utils.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/parser/parser_utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/parser/precedence.o",
+      "src/parser/precedence.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/parser/precedence.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/parser/precedence.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/runtime/environment.o",
+      "src/runtime/environment.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/runtime/environment.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/runtime/environment.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/runtime/value.o",
+      "src/runtime/value.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/runtime/value.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/runtime/value.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/runtime/runtime.o",
+      "src/runtime/runtime.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/runtime/runtime.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/runtime/runtime.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/runtime/operations.o",
+      "src/runtime/operations.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/runtime/operations.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/runtime/operations.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/ast/ast.o",
+      "src/ast/ast.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/ast/ast.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/ast/ast.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/builtins/list_methods.o",
+      "src/builtins/list_methods.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/builtins/list_methods.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/builtins/list_methods.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-std=c++17",
+      "-Isrc",
+      "-fsanitize=address",
+      "-fsanitize=undefined",
+      "-c",
+      "-o",
+      "obj/builtins/natives.o",
+      "src/builtins/natives.cpp"
+    ],
+    "directory": "/home/student/Programy/C++/Jazyk",
+    "file": "/home/student/Programy/C++/Jazyk/src/builtins/natives.cpp",
+    "output": "/home/student/Programy/C++/Jazyk/obj/builtins/natives.o"
+  }
+]

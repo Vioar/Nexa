@@ -1,0 +1,4 @@
+var name = ["a","h","o","j"]
+
+
+print(len(name))

@@ -1,0 +1,10 @@
+/bin/
+/obj/
+
+/.cache/
+/.vscode/
+
+*.o
+
+*.tmp
+*~
