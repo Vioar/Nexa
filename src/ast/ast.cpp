@@ -4,6 +4,8 @@
 #include <error.h>
 #include <iostream>
 #include <filesystem>
+#include <memory>
+#include <string>
 namespace fs = std::filesystem;
 
 #include "ast/ast.hpp"
@@ -13,6 +15,7 @@ namespace fs = std::filesystem;
 #include "runtime/operations.hpp"
 #include "runtime/environment.hpp"
 #include "runtime/runtime.hpp"
+#include "module/module.hpp"
 #include "common/types.hpp"
 #include "runtime/value.hpp"
 #include "builtins/list_methods.hpp"
@@ -111,7 +114,7 @@ Value CallExpr::eval(ExecutionContext& exec_con) {
         auto func = exec_con.env.get_func(callee, loc);
 
         if (args.size() != func.args.size()) {
-            throw CompileError("Function " + callee + "() expects " + std::to_string(func.args.size()) + " arguments, got " + std::to_string(args.size()), loc);
+            throw CompileError("Function " + callee + " expects " + std::to_string(func.args.size()) + " arguments, got " + std::to_string(args.size()), loc);
         }
 
         Environment funEnv(&exec_con.env);
@@ -147,8 +150,61 @@ Value MemberCallExpr::eval(ExecutionContext& exec_con) {
     throw RuntimeError(typeToStr(obj.type) + " has no method called " + method, loc);
 }
 
-Value GetExpr::eval(ExecutionContext&) {
-    return {};
+Value ModuleCallExpr::eval(ExecutionContext& exec_con) {
+    Value obj = object->eval(exec_con);
+
+    if (obj.type != ValueType::Module) {
+        throw RuntimeError("Cannot access property of " + typeToStr(obj.type), loc);
+    }
+
+    auto module = std::get<std::shared_ptr<Module>>(obj.data);
+
+    if (!module) {
+        throw RuntimeError("Invalid module", loc);
+    }
+
+
+    if (module->getEnv().exists_func(method)) {
+
+        auto func = module->getEnv().get_func(method);
+
+        if (args.size() != func.args.size()) {
+            throw RuntimeError(method + " excpected " + std::to_string(func.args.size()) + ", got " + std::to_string(args.size()), loc);
+        }
+
+        Environment funcEnv(&module->getEnv());
+        ExecutionContext funCont{funcEnv, exec_con.runtime};
+
+        for (size_t i = 0; i<func.args.size(); i++) {
+            Value arg = args[i]->eval(exec_con);
+            funCont.env.declare(func.args[i], arg.type, arg, loc);
+        }
+
+        for (auto& i : *func.body) {
+            i->execute(funCont);
+        }
+
+        return {ValueType::Undefined, std::monostate{}};
+    }
+
+    throw RuntimeError("Undefined: " + method, loc);
+}
+
+Value GetExpr::eval(ExecutionContext& exec_con) {
+
+    Value obj = object->eval(exec_con);
+
+    if (obj.type != ValueType::Module) {
+        throw RuntimeError("Cannot access property of " + typeToStr(obj.type), loc);
+    }
+
+    auto module = std::get<std::shared_ptr<Module>>(obj.data);
+
+    if (!module) {
+        throw RuntimeError("Invalid module", loc);
+    }
+
+    return module->getEnv().get(name, loc);
 }
 
 Value IndexExpr::eval(ExecutionContext& exec_con) {
@@ -310,10 +366,21 @@ void ForStmt::execute(ExecutionContext& exec_con) {
 
 void ImportStmt::execute(ExecutionContext& exec_con) {
     for (auto& name : names) {
-        fs::path path(name);
+        fs::path path = name;
 
         std::cout << path;
 
         std::cout << (exec_con.runtime.loadModule(path, loc)?"Ano":"Ne");
+
+        std::string moduleName = path.stem().string();
+
+        auto it = exec_con.runtime.modules.find(moduleName);
+
+        if (it == exec_con.runtime.modules.end()) {
+            throw RuntimeError("Module not found: " + moduleName, loc);
+        }
+
+        Value module{ValueType::Module, it->second};
+        exec_con.env.declare(moduleName, ValueType::Module, module, loc);
     }
 }

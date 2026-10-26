@@ -1,6 +1,7 @@
 // environment.cpp
 
 #include "runtime/environment.hpp"
+#include "common/error.hpp"
 #include "runtime/runtime.hpp"
 #include <error.h>
 
@@ -41,6 +42,10 @@ void Environment::set(const std::string& name, Value value, SourceLocation loc) 
 }
 
 Value Environment::get(const std::string& name, SourceLocation loc) {
+    if (exists_func(name)) {
+        throw RuntimeError("Expected arguments in function call", loc);
+    }
+
     auto it = vars.find(name);
 
     if (it != vars.end()) {

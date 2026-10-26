@@ -10,11 +10,13 @@
 #include "common/types.hpp"
 #include "common/error.hpp"
 
+class Module;
+
 struct Value;
 
 using List = std::shared_ptr<std::vector<Value>>;
 
-using RawValue = std::variant<std::monostate, int, double, std::string, bool, List>;
+using RawValue = std::variant<std::monostate, int, double, std::string, bool, List, std::shared_ptr<Module>>;
 
 struct Value {
     ValueType type;

@@ -133,6 +133,18 @@ public:
     Value eval(ExecutionContext& exe_cont) override;
 };
 
+class ModuleCallExpr : public Expr {
+public:
+    std::unique_ptr<Expr> object;
+    std::string method;
+    std::vector<std::unique_ptr<Expr>> args;
+
+    ModuleCallExpr(std::unique_ptr<Expr> obj, std::string met, std::vector<std::unique_ptr<Expr>> a, SourceLocation l)
+        : Expr(l), object(std::move(obj)), method(std::move(met)), args(std::move(a)) {}
+
+    Value eval(ExecutionContext& exe_cont) override;
+};
+
 class GetExpr : public Expr {
 public:
     std::unique_ptr<Expr> object;

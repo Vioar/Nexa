@@ -53,6 +53,9 @@ std::string toString(const Value& v, SourceLocation loc) {
             return out;
         }
 
+        case ValueType::Module:
+            // TODO
+
         case ValueType::Undefined:
             return "";
     }
@@ -92,6 +95,7 @@ int toInt(const Value& v, SourceLocation loc) {
             }
         }
         case ValueType::List:
+        case ValueType::Module:
         case ValueType::Undefined:
             throw ValueError("Cannot convert " + typeToStr(v.type) + " to int", loc);
     }
@@ -131,6 +135,7 @@ double toFloat(const Value& v, SourceLocation loc) {
             }
         }
         case ValueType::List:
+        case ValueType::Module:
         case ValueType::Undefined:
             throw ValueError("Cannot convert " + typeToStr(v.type) + " to float", loc);
     }
@@ -156,6 +161,10 @@ bool toBool(const Value& v, SourceLocation loc) {
         }
         case ValueType::List:
             return !std::get<List>(v.data)->empty();
+
+        case ValueType::Module:
+            // TODO
+
         case ValueType::Undefined:
             throw ValueError("Cannot convert " + typeToStr(v.type) + " to bool", loc);
     }
@@ -190,6 +199,7 @@ std::string typeToStr(const ValueType& v) {
         case ValueType::String: return "str";
         case ValueType::Bool: return "bool";
         case ValueType::List: return "list";
+        case ValueType::Module: return "module";
         case ValueType::Undefined: return "None";
     }
 
@@ -212,6 +222,9 @@ bool Value::isTruthy() const {
 
         case ValueType::List:
             return !std::get<List>(data)->empty();
+
+        case ValueType::Module:
+            // TODO
 
         case ValueType::Undefined:
             return false;

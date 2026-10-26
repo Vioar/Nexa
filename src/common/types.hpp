@@ -12,5 +12,7 @@ enum class ValueType {
 
     List,
 
+    Module,
+
     Undefined
 };

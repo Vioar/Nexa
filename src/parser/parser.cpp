@@ -124,6 +124,27 @@ std::unique_ptr<Expr> Parser::parseInfix(std::unique_ptr<Expr> left, const Token
             throw CompileError("Expected property name after :", {name.line, name.column});
         }
 
+        if (match(TokenType::LParen)) {
+            std::vector<std::unique_ptr<Expr>> args;
+
+            if (peek().type != TokenType::RParen) {
+                do {
+                    args.push_back(parseExpression(Precedence::Assignment));
+                } while (match(TokenType::Comma));
+            }
+
+            if (!match(TokenType::RParen)) {
+                throw CompileError("Expected ')'", {peek().line, peek().column});
+            }
+
+            return std::make_unique<ModuleCallExpr>(
+                std::move(left),
+                name.text,
+                std::move(args),
+                SourceLocation{name.line, name.column}
+            );
+        }
+
         return std::make_unique<GetExpr>(
             std::move(left),
             name.text,
