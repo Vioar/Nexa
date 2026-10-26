@@ -1,0 +1,7 @@
+print("\nTest\n")
+
+var a = (string)"Ahoj"
+
+fun b(a) do
+    print(a)
+done
